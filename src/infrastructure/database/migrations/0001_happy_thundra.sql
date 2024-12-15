@@ -1,0 +1,1 @@
+ALTER TABLE `transaction` MODIFY COLUMN `created_by_user_id` bigint unsigned NOT NULL;

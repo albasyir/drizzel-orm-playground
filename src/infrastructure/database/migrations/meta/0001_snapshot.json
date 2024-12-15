@@ -1,9 +1,61 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "f6b88e41-c0e9-4464-9af7-f09e8b29126d",
-  "prevId": "51d486f6-28ef-4b12-bb0f-7d373a9936f1",
+  "id": "68d97136-54b7-465b-96fd-5d420732fdd7",
+  "prevId": "66acdad3-789f-47a3-8843-1f0517bd769d",
   "tables": {
+    "transaction": {
+      "name": "transaction",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "price": {
+          "name": "price",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_by_user_id": {
+          "name": "created_by_user_id",
+          "type": "bigint unsigned",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "transaction_created_by_user_id_user_id_fk": {
+          "name": "transaction_created_by_user_id_user_id_fk",
+          "tableFrom": "transaction",
+          "tableTo": "user",
+          "columnsFrom": [
+            "created_by_user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "transaction_id": {
+          "name": "transaction_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
     "user": {
       "name": "user",
       "columns": {
@@ -60,9 +112,7 @@
   "views": {},
   "_meta": {
     "schemas": {},
-    "tables": {
-      "\"user_identities\"": "\"user\""
-    },
+    "tables": {},
     "columns": {}
   },
   "internal": {
